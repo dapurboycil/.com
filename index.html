@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111827">
+  <title>Dapur BoyCill</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- LOGIN -->
+  <section id="loginScreen" class="auth-screen">
+    <div class="auth-card">
+      <div class="brand-center">
+        <img src="https://i.imgur.com/qje8u9V.png" alt="Dapur BoyCill" class="auth-logo">
+        <div class="eyebrow">ANDA KENYANG SAYA SENANG</div>
+        <h1>Dapur BoyCill</h1>
+        <p>Silahkan login untuk mengelola</p>
+      </div>
+
+      <form id="loginForm" autocomplete="on">
+        <label>Username
+          <input id="loginUser" type="text" autocomplete="username" value=" " required>
+        </label>
+        <label>Password
+          <input id="loginPass" type="password" autocomplete="current-password" placeholder="Masukkan password" required>
+        </label>
+        <button class="btn btn-primary btn-block" type="submit">Login</button>
+      </form>
+
+      <div class="auth-links">
+        <button type="button" class="link-btn" data-action="forgot">Lupa password?</button>
+        <span>•</span>
+        <button type="button" class="link-btn" data-action="reset">Reset password</button>
+      </div>
+      <div class="default-hint">Di buat oleh:<b>Eboy</b>  <b>MV</b></div>
+      <div class="security-note">www.dapurboyycill.com</div>
+    </div>
+  </section>
+
+  <!-- APP -->
+  <div id="appShell" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-brand">
+        <img src="https://i.imgur.com/qje8u9V.png" alt="Logo">
+        <div><strong>Dapur BoyCill</strong><small>ANDA KENYANG SAYA SENANG</small></div>
+      </div>
+      <nav class="nav">
+        <button data-page="dashboard" class="nav-item active">🏠 <span>Dashboard</span></button>
+        <button data-page="order" class="nav-item">🛒 <span>Pemesanan</span></button>
+        <button data-page="transactions" class="nav-item">💳 <span>Kasir / Transaksi</span></button>
+        <button data-page="stock" class="nav-item">📦 <span>Stok Barang</span></button>
+        <button data-page="expenses" class="nav-item">💸 <span>Pengeluaran</span></button>
+        <button data-page="reports" class="nav-item">📊 <span>Laporan</span></button>
+        <button data-page="history" class="nav-item">🧾 <span>Riwayat Struk</span></button>
+        <button data-page="settings" class="nav-item">⚙️ <span>Pengaturan</span></button>
+      </nav>
+      <div class="side-footer">
+        <div class="sync-dot" id="syncDot"></div>
+        <span id="syncText">Penyimpanan lokal</span>
+        <button class="btn btn-ghost btn-block" data-action="logout">↩ Keluar</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn mobile-menu" data-action="toggle-sidebar">☰</button>
+        <div>
+          <div class="top-title" id="pageTitle">Dashboard</div>
+          <div class="top-subtitle" id="clockText"></div>
+        </div>
+        <div class="top-actions">
+          <button class="btn btn-soft" data-action="sync">☁️ Sinkron</button>
+          <button class="avatar" title="Pengguna aktif" data-page="settings">A</button>
+        </div>
+      </header>
+
+      <section class="content">
+        <!-- DASHBOARD -->
+        <div class="page active" id="page-dashboard">
+          <div class="hero">
+            <div>
+              <span class="eyebrow">SELAMAT DATANG</span>
+              <h2>Laila Suci Andini</h2>
+              <p>Kasir, stok, pengeluaran, laporan, dan struk dalam satu dashboard</p>
+              <button class="btn btn-light" data-page="order">＋ Buat Pesanan</button>
+            </div>
+            <img src="https://i.imgur.com/qje8u9V.png" alt="Dapur BoyCill">
+          </div>
+          <div class="stat-grid">
+            <div class="stat-card"><span>Penjualan Hari Ini</span><strong id="statSales">Rp 0</strong><small id="statOrders">0 transaksi</small></div>
+            <div class="stat-card"><span>Keuntungan Hari Ini</span><strong id="statProfit">Rp 0</strong><small>berdasarkan HPP menu</small></div>
+            <div class="stat-card"><span>Produk</span><strong id="statProducts">0</strong><small>menu aktif</small></div>
+            <div class="stat-card"><span>Stok Menipis</span><strong id="statLowStock">0</strong><small>≤ 5 unit</small></div>
+          </div>
+          <div class="section-head"><div><h3>Akses Cepat</h3><p>Masuk ke fitur utama</p></div></div>
+          <div class="quick-grid">
+            <button class="quick-card" data-page="order"><b>🛒</b><span>Pemesanan</span><small>Buat order & cetak struk</small></button>
+            <button class="quick-card" data-page="stock"><b>📦</b><span>Stok Barang</span><small>Modal, jual, stok & profit</small></button>
+            <button class="quick-card" data-page="expenses"><b>💸</b><span>Pengeluaran</span><small>Catat dan download</small></button>
+            <button class="quick-card" data-page="reports"><b>📊</b><span>Laporan</span><small>Ringkasan penjualan</small></button>
+          </div>
+        </div>
+
+        <!-- ORDER -->
+        <div class="page" id="page-order">
+          <div class="page-head"><div><h2>Pemesanan</h2><p>Buat transaksi baru dan cetak struk detail</p></div><button class="btn btn-soft" data-page="dashboard">← Back</button></div>
+          <div class="order-layout">
+            <div class="panel">
+              <div class="panel-head"><h3>Pilih Menu</h3><input id="menuSearch" class="search" placeholder="Cari menu..."></div>
+              <div id="menuGrid" class="menu-grid"></div>
+            </div>
+            <div class="panel cart-panel">
+              <div class="panel-head"><h3>Keranjang</h3><button class="link-btn danger" data-action="clear-cart">Kosongkan</button></div>
+              <div class="form-grid">
+                <label>Nama Pemesan<input id="customerName" placeholder="Nama pemesan"></label>
+                <label>No. Antrian<input id="queueNo" type="text" readonly></label>
+                <label>Diskon (Rp)<input id="discount" type="number" min="0" value="0"></label>
+                <label>Tanggal & Jam<input id="orderDate" type="text" readonly></label>
+              </div>
+              <div id="cartList" class="cart-list"></div>
+              <div class="totals">
+                <div><span>Subtotal</span><b id="cartSubtotal">Rp 0</b></div>
+                <div><span>Diskon</span><b id="cartDiscount">Rp 0</b></div>
+                <div class="grand"><span>Total</span><b id="cartTotal">Rp 0</b></div>
+              </div>
+              <label class="cash-field">Tunai Dibayar<input id="cashPaid" type="number" min="0" placeholder="0"></label>
+              <div class="change-box"><span>Kembalian</span><strong id="cashChange">Rp 0</strong></div>
+              <button class="btn btn-primary btn-block" data-action="checkout">✓ Bayar & Cetak Struk</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- TRANSACTIONS -->
+        <div class="page" id="page-transactions">
+          <div class="page-head"><div><h2>Kasir / Transaksi</h2><p>Transaksi terbaru dan ringkasan pembayaran</p></div><button class="btn btn-soft" data-page="dashboard">← Back</button></div>
+          <div class="stat-grid compact">
+            <div class="stat-card"><span>Total Transaksi</span><strong id="trxCount">0</strong></div>
+            <div class="stat-card"><span>Omzet</span><strong id="trxSales">Rp 0</strong></div>
+            <div class="stat-card"><span>Profit</span><strong id="trxProfit">Rp 0</strong></div>
+          </div>
+          <div class="panel table-panel"><div class="panel-head"><h3>Daftar Transaksi</h3><button class="btn btn-soft" data-action="download-transactions">⬇ Download CSV</button></div><div class="table-wrap"><table><thead><tr><th>Waktu</th><th>No. Antrian</th><th>Pemesan</th><th>Total</th><th>Tunai</th><th>Kembali</th><th>Aksi</th></tr></thead><tbody id="transactionTable"></tbody></table></div></div>
+        </div>
+
+        <!-- STOCK -->
+        <div class="page" id="page-stock">
+          <div class="page-head"><div><h2>Stok Barang</h2><p>Kelola stok, harga modal, harga jual dan keuntungan</p></div><div><button class="btn btn-soft" data-page="dashboard">← Back</button> <button class="btn btn-primary" data-action="add-product">＋ Tambah</button></div></div>
+          <div class="panel table-panel"><div class="panel-head"><h3>Data Produk</h3><button class="btn btn-soft" data-action="download-stock">⬇ Download CSV</button></div><div class="table-wrap"><table><thead><tr><th>Produk</th><th>Stok</th><th>Modal</th><th>Harga Jual</th><th>Untung/Unit</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="stockTable"></tbody></table></div></div>
+        </div>
+
+        <!-- EXPENSES -->
+        <div class="page" id="page-expenses">
+          <div class="page-head"><div><h2>Pengeluaran</h2><p>Catat biaya operasional dan download datanya</p></div><div><button class="btn btn-soft" data-page="dashboard">← Back</button> <button class="btn btn-primary" data-action="add-expense">＋ Pengeluaran</button></div></div>
+          <div class="stat-grid compact"><div class="stat-card"><span>Total Pengeluaran</span><strong id="expenseTotal">Rp 0</strong></div><div class="stat-card"><span>Jumlah Catatan</span><strong id="expenseCount">0</strong></div></div>
+          <div class="panel table-panel"><div class="panel-head"><h3>Riwayat Pengeluaran</h3><button class="btn btn-soft" data-action="download-expenses">⬇ Download CSV</button></div><div class="table-wrap"><table><thead><tr><th>Tanggal</th><th>Keterangan</th><th>Kategori</th><th>Nominal</th><th>Aksi</th></tr></thead><tbody id="expenseTable"></tbody></table></div></div>
+        </div>
+
+        <!-- REPORTS -->
+        <div class="page" id="page-reports">
+          <div class="page-head"><div><h2>Laporan</h2><p>Ringkasan omzet, HPP, pengeluaran dan keuntungan</p></div><button class="btn btn-soft" data-page="dashboard">← Back</button></div>
+          <div class="report-filter panel"><label>Dari<input id="reportFrom" type="date"></label><label>Sampai<input id="reportTo" type="date"></label><button class="btn btn-primary" data-action="refresh-report">Tampilkan</button><button class="btn btn-soft" data-action="download-report">⬇ Download Laporan</button></div>
+          <div class="stat-grid"><div class="stat-card"><span>Omzet</span><strong id="reportSales">Rp 0</strong></div><div class="stat-card"><span>HPP</span><strong id="reportHpp">Rp 0</strong></div><div class="stat-card"><span>Pengeluaran</span><strong id="reportExpense">Rp 0</strong></div><div class="stat-card"><span>Laba Bersih</span><strong id="reportNet">Rp 0</strong></div></div>
+          <div class="panel"><div class="panel-head"><h3>Produk Terjual</h3></div><div class="table-wrap"><table><thead><tr><th>Menu</th><th>Qty</th><th>Omset</th><th>HPP</th><th>Profit</th></tr></thead><tbody id="reportProductTable"></tbody></table></div></div>
+        </div>
+
+        <!-- HISTORY -->
+        <div class="page" id="page-history">
+          <div class="page-head"><div><h2>Riwayat Struk</h2><p>Struk tersimpan dapat dicetak atau di-download sebagai PDF dari dialog cetak</p></div><div><button class="btn btn-soft" data-page="dashboard">← Back</button> <button class="btn btn-soft" data-action="download-history">⬇ Download Data</button></div></div>
+          <div class="panel table-panel"><div class="panel-head"><h3>Arsip Struk</h3></div><div class="table-wrap"><table><thead><tr><th>Tanggal & Jam</th><th>No. Antrian</th><th>Pemesan</th><th>Item</th><th>Total</th><th>Aksi</th></tr></thead><tbody id="historyTable"></tbody></table></div></div>
+        </div>
+
+        <!-- SETTINGS -->
+        <div class="page" id="page-settings">
+          <div class="page-head"><div><h2>Pengaturan</h2><p>Profil login, backup dan sinkronisasi Google Drive.</p></div><button class="btn btn-soft" data-page="dashboard">← Back</button></div>
+          <div class="settings-grid">
+            <div class="panel"><div class="panel-head"><h3>Akun Login</h3></div>
+              <form id="passwordForm" class="stack-form"><label>Username<input id="settingUser" required></label><label>Password Lama<input id="oldPass" type="password" required></label><label>Password Baru<input id="newPass" type="password" minlength="6" required></label><label>Konfirmasi Password<input id="confirmPass" type="password" minlength="6" required></label><button class="btn btn-primary" type="submit">Simpan Perubahan</button></form>
+            </div>
+            <div class="panel"><div class="panel-head"><h3>☁️ Google Drive</h3></div>
+              <p class="muted">Masukkan URL Web App Google Apps Script yang ada di folder project. Data aplikasi akan dikirim sebagai JSON ke Drive melalui endpoint tersebut.</p>
+              <label>URL Web App<input id="driveUrl" placeholder="https://script.google.com/macros/s/XXXX/exec"></label>
+              <div class="button-row"><button class="btn btn-primary" data-action="save-drive">Simpan URL</button><button class="btn btn-soft" data-action="sync">☁️ Sinkron Sekarang</button></div>
+              <div id="syncStatus" class="sync-status"></div>
+            </div>
+            <div class="panel"><div class="panel-head"><h3>💾 Backup Lokal</h3></div><p class="muted">Backup JSON dapat dipindahkan ke komputer lain atau disimpan sebagai cadangan</p><div class="button-row"><button class="btn btn-soft" data-action="export-json">⬇ Export JSON</button><label class="btn btn-soft file-btn">⬆ Import JSON<input id="importJson" type="file" accept=".json" hidden></label><button class="btn btn-danger" data-action="factory-reset">Reset Data</button></div></div>
+            <div class="panel info-panel"><div class="panel-head"><h3>ℹ️ Informasi Warung</h3></div><p><b>Dapur BoyCill</b><br>Cibinong, Cikaret<br>WhatsApp: 087785835454</p><p class="muted">Versi 1.0 • Offline-first • Google Drive sync opsional</p></div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden"><div class="modal-backdrop" data-action="close-modal"></div><div class="modal-card"><div class="modal-head"><h3 id="modalTitle">Form</h3><button class="icon-btn" data-action="close-modal">×</button></div><div id="modalBody"></div></div></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
